@@ -1,0 +1,50 @@
+version: '3.1'
+services:
+  gateway:
+    container_name: gateway
+    build:
+      context: ./gateway
+      dockerfile: Dockerfile
+    ports:
+      - '5004:5000'
+    volumes:
+       - ./gateway:/usr/src/app/gateway
+       - /usr/src/app/gateway/node_modules
+    environment:
+      - CHOKIDAR_USEPOLLING=true
+  api1:
+    container_name: api1
+    build:
+      context: ./api1
+      dockerfile: Dockerfile
+    ports:
+      - '5001:5000'
+    volumes:
+       - ./api1:/usr/src/app/api1
+       - /usr/src/app/api1/node_modules
+    environment:
+      - CHOKIDAR_USEPOLLING=true
+  api2:
+    container_name: api2
+    build:
+      context: ./api2
+      dockerfile: Dockerfile
+    ports:
+      - '5002:5000'
+    volumes:
+       - ./api2:/usr/src/app/api2
+       - /usr/src/app/api2/node_modules
+    environment:
+      - CHOKIDAR_USEPOLLING=true
+  api3:
+    container_name: api3
+    build:
+      context: ./api3
+      dockerfile: Dockerfile
+    ports:
+      - '5003:5000'
+    volumes:
+       - ./api3:/usr/src/app/api3
+       - /usr/src/app/api3/node_modules
+    environment:
+      - CHOKIDAR_USEPOLLING=true
